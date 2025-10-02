@@ -1,204 +1,117 @@
 <template>
-    <div class="body_box">
-        <div class="header_box dark:bg-gray-700 shadow-lg">
-            <h1>Preemptive Priority</h1>
+    <main>
+        <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
+            <div class="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] lg:p-6">
+                <div class="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+                            Process Input
+                        </h3>
+                    </div>
+                    <div class="flex items-center gap-3">
+
+                    <button class="inline-flex items-center gap-2 px-4 py-3 text-sm font-medium text-white text-theme-sm font-medium text-gray-700 transition rounded-lg bg-brand-500 shadow-theme-xs hover:bg-brand-600">
+                        Add
+                    </button>
+                    <button
+                        class="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-current fill-white dark:fill-gray-800 size-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                        </svg>
+                        Reset
+                    </button>
+                </div>
+                </div>
+                <div class="p-5 border-t border-gray-100 dark:border-gray-800 sm:p-6">
+                    <div class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+                        <div class="max-w-full overflow-x-auto">
+                            <table class="min-w-full">
+                                <thead>
+                                    <tr class="border-b border-gray-100 dark:border-gray-800">
+                                        <th class="px-5 py-3 sm:px-6">
+                                            <div class="flex items-center">
+                                                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
+                                                    PID
+                                                </p>
+                                            </div>
+                                        </th>
+                                        <th class="px-5 py-3 sm:px-6">
+                                            <div class="flex items-center">
+                                                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
+                                                    Arrival
+                                                </p>
+                                            </div>
+                                        </th>
+                                        <th class="px-5 py-3 sm:px-6">
+                                            <div class="flex items-center">
+                                                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
+                                                    Burst
+                                                </p>
+                                            </div>
+                                        </th>
+                                        <th class="px-5 py-3 sm:px-6">
+                                            <div class="flex items-center">
+                                                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
+                                                    Priority
+                                                </p>
+                                            </div>
+                                        </th>
+                                        <th class="px-5 py-3 sm:px-6">
+                                            <div class="flex items-center">
+                                                <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
+                                                    Action
+                                                </p>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                    <tr>
+                                        <td class="px-5 py-4 sm:px-6">
+                                            <div class="flex items-center">
+                                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                                                    P1
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-4 sm:px-6">
+                                            <div class="flex items-center">
+                                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                                                    1
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-4 sm:px-6">
+                                            <div class="flex items-center">
+                                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                                                    2
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-4 sm:px-6">
+                                            <div class="flex items-center">
+                                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                                                    3
+                                                </p>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-4 sm:px-6">
+                                            <div class="flex items-center">
+                                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
+                                                    4
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="process_list bg-white rounded-xl shadow-lg p-6">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-semibold text-slate-800">Process Input</h2>
-                <button @click="onReset()"
-                    class="flex items-center gap-2 px-3 py-2 bg-slate-200 hover:bg-slate-300 rounded-lg transition-colors text-sm">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-refresh-cw w-4 h-4">
-                        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
-                        <path d="M21 3v5h-5"></path>
-                        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
-                        <path d="M8 16H3v5"></path>
-                    </svg>Reset
-                </button>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-2 mb-3">
-                <input placeholder="PID" v-model="newProcess.pid"
-                    class="px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    type="text" >
-                <input placeholder="Arrival" v-model="newProcess.arrival"
-                    class="px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    type="number" >
-                <input placeholder="Burst" v-model="newProcess.burst"
-                    class="px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    type="number" >
-                <input placeholder="Priority" v-model="newProcess.priority"
-                    class="px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    type="number">
-                <button @click="onAddNewProcess()"
-                    class="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-plus w-4 h-4">
-                        <path d="M5 12h14"></path>
-                        <path d="M12 5v14"></path>
-                    </svg>
-                    Add Process
-                </button>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm">
-                    <thead class="bg-slate-100">
-                        <tr>
-                            <th class="px-3 py-2 text-left font-semibold text-slate-700">PID</th>
-                            <th class="px-3 py-2 text-left font-semibold text-slate-700">Arrival</th>
-                            <th class="px-3 py-2 text-left font-semibold text-slate-700">Burst</th>
-                            <th class="px-3 py-2 text-left font-semibold text-slate-700">Priority</th>
-                            <th class="px-3 py-2 text-left font-semibold text-slate-700">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-slate-200 hover:bg-slate-50" v-for="(process, index) in processList"
-                            :key="index">
-                            <td class="px-3 py-2 font-medium text-slate-800">{{ process.pid }}</td>
-                            <td class="px-3 py-2 text-slate-600">{{ process.arrival }}</td>
-                            <td class="px-3 py-2 text-slate-600">{{ process.burst }}</td>
-                            <td class="px-3 py-2 text-slate-600">{{ process.priority }}</td>
-                            <td class="px-3 py-2">
-                                <button @click="deleteProcess(index)"
-                                    class="cursor-pointer text-red-600 hover:text-red-800">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="lucide lucide-trash2 w-4 h-4">
-                                        <path d="M3 6h18"></path>
-                                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                                        <line x1="10" x2="10" y1="11" y2="17"></line>
-                                        <line x1="14" x2="14" y1="11" y2="17"></line>
-                                    </svg>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <button @click="onCalculate()"
-                class="w-full mt-4 flex items-center justify-center gap-2 px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"><svg
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-play w-5 h-5">
-                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                </svg>Run Scheduler
-            </button>
-        </div>
-        <Transition name="fade">
-            <div class="box bg-white rounded-xl shadow-lg p-6" v-if="result && result?.processes">
-                <div class="mb-5">
-                    <h2 class="text-xl font-semibold text-slate-800 mb-4">Process Details</h2>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-sm">
-                            <thead class="bg-slate-100">
-                            <tr>
-                                <th class="px-4 py-3 text-left font-semibold text-slate-700">PID</th>
-                                <th class="px-4 py-3 text-left font-semibold text-slate-700">Arrival</th>
-                                <th class="px-4 py-3 text-left font-semibold text-slate-700">Burst</th>
-                                <th class="px-4 py-3 text-left font-semibold text-slate-700">Priority</th>
-                                <th class="px-4 py-3 text-left font-semibold text-slate-700">Completion</th>
-                                <th class="px-4 py-3 text-left font-semibold text-slate-700">Turnaround</th>
-                                <th class="px-4 py-3 text-left font-semibold text-slate-700">Waiting</th>
-                                <th class="px-4 py-3 text-left font-semibold text-slate-700">Response</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b border-slate-200 hover:bg-slate-50" v-for="(p, idx) in result?.processes" :key="idx">
-                                    <td class="px-4 py-3 font-medium text-slate-800">{{p.pid}}</td>
-                                    <td class="px-4 py-3 text-slate-600">{{p.arrival}}</td>
-                                    <td class="px-4 py-3 text-slate-600">{{p.burst}}</td>
-                                    <td class="px-4 py-3 text-slate-600">{{p.priority}}</td>
-                                    <td class="px-4 py-3 text-slate-600">{{p.completion}}</td>
-                                    <td class="px-4 py-3 text-slate-600">{{p.turnaround}}</td>
-                                    <td class="px-4 py-3 text-slate-600">{{p.waiting}}</td>
-                                    <td class="px-4 py-3 text-slate-600">{{p.response}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <h2 class="text-xl font-semibold text-slate-800 mb-4">Performance Metrics</h2>
-                <div class="space-y-4">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-blue-50 p-4 rounded-lg">
-                            <div class="text-sm text-blue-600 font-medium mb-1">CPU Utilization</div>
-                            <div class="text-2xl font-bold text-blue-700" id="cpuUtilization">{{ result?.cpuUtilization }} %</div>
-                        </div>
-                        <div class="bg-green-50 p-4 rounded-lg">
-                            <div class="text-sm text-green-600 font-medium mb-1">Throughput</div>
-                            <div class="text-2xl font-bold text-green-700" id="throughput">{{ result?.throughput }}</div>
-                        </div>
-                    </div>
-                    <div class="space-y-1">
-                        <div class="flex justify-between p-3 bg-slate-50 rounded-lg">
-                            <span class="text-slate-700 font-medium">Avg Turnaround Time</span>
-                            <span class="text-slate-900 font-semibold" id="avgTurnaround">{{ result?.avgTurnaround }}</span>
-                        </div>
-                        <div class="flex justify-between p-3 bg-slate-50 rounded-lg">
-                            <span class="text-slate-700 font-medium">Avg Waiting Time</span>
-                            <span class="text-slate-900 font-semibold" id="avgWaiting">{{ result?.avgWaiting }}</span>
-                        </div>
-                        <div class="flex justify-between p-3 bg-slate-50 rounded-lg">
-                            <span class="text-slate-700 font-medium">Avg Response Time</span>
-                            <span class="text-slate-900 font-semibold" id="avgResponse">{{ result?.avgResponse }}</span>
-                        </div>
-                        <div class="flex justify-between p-3 bg-slate-50 rounded-lg">
-                            <span class="text-slate-700 font-medium">Total Time</span>
-                            <span class="text-slate-900 font-semibold" id="totalTime">{{ result?.totalTime }}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-5" v-if="result && result?.ganttChart?.length > 0">
-                    <h2 class="text-xl font-semibold text-slate-800 mb-4">Gantt Chart</h2>
-                    <div class="overflow-x-auto">
-                        <div class="flex min-w-max">
-                            <div class="flex flex-col" v-for="(segment, idx) in result?.ganttChart" :key="idx">
-                                <div class="border border-slate-300 px-4 py-3 text-center font-medium text-white" :style="`background: ${colorMap[segment.pid]};min-width: ${(segment.end - segment.start) * 40}px;`">
-                                    {{ segment.pid }}
-                                    <div class="text-xs text-white mt-1"><span>{{segment.start}}</span>-<span>{{ segment.end }}</span></div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Transition>
-    </div>
-    <div id="toast-bottom-right" class="fixed flex flex-col w-full max-w-xs p-4 space-x-4 rounded-lg shadow-sm right-5 bottom-5 " >
-        <TransitionGroup name="fade">
-            <div id="toast-danger" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-sm dark:text-gray-400 dark:bg-gray-800" role="alert" v-for="noti in notification" :key="noti">
-                <div class="inline-flex items-center justify-center shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"/>
-                    </svg>
-                    <span class="sr-only">Error icon</span>
-                </div>
-                <div class="ms-3 text-sm font-normal">{{ noti }}</div>
-            </div>
-        </TransitionGroup>
-    </div>
-    
-    <div style="width: 100%;display: flex;justify-content: center;">
-        <footer class="bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800" style="width: 62.5vw;">
-            <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-center">
-                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">ธนพฤฒ วิบูลย์ภาณุเวช 1660904556</span>
-            </div>
-            <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-center">
-                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">ธนกร ปัญจสุนทร 1660901545</span>
-            </div>
-            <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-center">
-                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">ปรรณกฤติ ไพบูลย์กุลวงษ์ 1660904564</span>
-            </div>
-            <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-center">
-                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">ธนวินท์ วันหนุน 1660902550</span>
-            </div>
-        </footer>
-    </div>
+    </main>
 </template>
 <script>
 import gsap from 'gsap'
@@ -210,25 +123,25 @@ export default {
             processList: [
                 { pid: 'P1', arrival: 0, burst: 10, priority: 3 },
                 { pid: 'P2', arrival: 1, burst: 20, priority: 2 },
-                { pid: 'P3', arrival: 2, burst: 5,  priority: 1 },
-                { pid: 'P4', arrival: 3, burst: 3,  priority: 5 },
+                { pid: 'P3', arrival: 2, burst: 5, priority: 1 },
+                { pid: 'P4', arrival: 3, burst: 3, priority: 5 },
                 { pid: 'P5', arrival: 3, burst: 15, priority: 4 },
                 { pid: 'P6', arrival: 5, burst: 25, priority: 2 },
                 { pid: 'P7', arrival: 6, burst: 10, priority: 1 },
                 { pid: 'P8', arrival: 7, burst: 25, priority: 1 },
-                { pid: 'P9', arrival: 7, burst: 5,  priority: 3 },
+                { pid: 'P9', arrival: 7, burst: 5, priority: 3 },
                 { pid: 'P10', arrival: 9, burst: 10, priority: 3 }
             ],
             defaultList: [
                 { pid: 'P1', arrival: 0, burst: 10, priority: 3 },
                 { pid: 'P2', arrival: 1, burst: 20, priority: 2 },
-                { pid: 'P3', arrival: 2, burst: 5,  priority: 1 },
-                { pid: 'P4', arrival: 3, burst: 3,  priority: 5 },
+                { pid: 'P3', arrival: 2, burst: 5, priority: 1 },
+                { pid: 'P4', arrival: 3, burst: 3, priority: 5 },
                 { pid: 'P5', arrival: 3, burst: 15, priority: 4 },
                 { pid: 'P6', arrival: 5, burst: 25, priority: 2 },
                 { pid: 'P7', arrival: 6, burst: 10, priority: 1 },
                 { pid: 'P8', arrival: 7, burst: 25, priority: 1 },
-                { pid: 'P9', arrival: 7, burst: 5,  priority: 3 },
+                { pid: 'P9', arrival: 7, burst: 5, priority: 3 },
                 { pid: 'P10', arrival: 9, burst: 10, priority: 3 }
             ],
             newProcess: {
@@ -282,7 +195,7 @@ export default {
             }
             this.result = this.preemptivePriorityScheduling(this.processList)
             this.colorMap = this.getGanttColor()
-            
+
             setTimeout(() => {
                 gsap.from("#cpuUtilization", {
                     innerText: 0,
@@ -313,7 +226,7 @@ export default {
         onReset() {
             this.result = []
             this.processList = JSON.parse(JSON.stringify(this.defaultList))
-            
+
         },
         preemptivePriorityScheduling(process) {
             const processList = process.map(p => ({
