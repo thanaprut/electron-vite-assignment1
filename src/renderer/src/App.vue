@@ -223,8 +223,8 @@ export default {
             this.result = []
             this.processList = JSON.parse(JSON.stringify(this.defaultList))
         },
-        preemptivePriorityScheduling(process) {
-            const processList = process.map(p => ({
+        preemptivePriorityScheduling(listProcess) {
+            const processList = listProcess.map(p => ({
                 ...p,
                 remaining: p.burst,
                 completion: 0,
@@ -238,7 +238,6 @@ export default {
             let completed = 0;
             const n = processList.length;
             const ganttChart = [];
-            const timeline = [];
             while (completed < n) {
                 const available = processList.filter(p => p.arrival <= time && p.remaining > 0);
 
@@ -268,6 +267,7 @@ export default {
                     time += 1;
                 }
             }
+            //
             const compressed = [];
             let i = 0;
             while (i < ganttChart.length) {
@@ -278,6 +278,7 @@ export default {
                 }
                 compressed.push({ pid, start, end: i });
             }
+            //
             const cpuBusyTime = ganttChart.filter(pid => pid !== 'Idle').length;
             const cpuUtilization = (cpuBusyTime / time) * 100;
             const throughput = n / time;

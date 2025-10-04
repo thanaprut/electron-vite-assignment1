@@ -10,6 +10,14 @@
                     </div>
                     <div class="flex items-center gap-3">
                         <button
+                            @click="downloadCSV(result?.processes)"
+                            class="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-current fill-white dark:fill-gray-800 size-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                            Download
+                        </button>
+                        <button
                             @click="this.$emit('goToPage', 'main');"
                             class="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-current fill-white dark:fill-gray-800 size-4">
@@ -211,6 +219,41 @@ export default {
             innerText: 0,
             duration: 1,
         });
+    },
+    methods: {
+        downloadCSV(processes, filename = 'process_list.csv') {
+            const processHeaders = Object.keys(processes[0]);
+            const processRows = [
+                '=== Process List ===',
+                processHeaders.join(','),
+                ...processes.map(obj => processHeaders.map(h => obj[h]).join(','))
+            ];
+            const summary = {
+                cpuUtilization: this.result.cpuUtilization,
+                throughput: this.result.throughput,
+                avgTurnaround: this.result.avgTurnaround,
+                avgWaiting: this.result.avgWaiting,
+                avgResponse: this.result.avgResponse,
+                totalTime: this.result.totalTime,
+            }
+            const summaryHeaders = Object.keys(summary);
+            const summaryValues = Object.values(summary);
+            const summaryRows = [
+                '', 
+                '=== Summary ===',
+                summaryHeaders.join(','),
+                summaryValues.join(',')
+            ];
+            const csvContent = [...processRows, ...summaryRows].join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     },
 }
 </script>
