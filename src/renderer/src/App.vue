@@ -218,38 +218,10 @@ export default {
             this.result = this.preemptivePriorityScheduling(this.processList)
             this.colorMap = this.getGanttColor()
             this.page = 'detail'
-
-            // setTimeout(() => {
-            //     gsap.from("#cpuUtilization", {
-            //         innerText: 0,
-            //         duration: 2,
-            //     });
-            //     gsap.from("#throughput", {
-            //         innerText: 0,
-            //         duration: 2,
-            //     });
-            //     gsap.from("#avgTurnaround", {
-            //         innerText: 0,
-            //         duration: 2,
-            //     });
-            //     gsap.from("#avgWaiting", {
-            //         innerText: 0,
-            //         duration: 2,
-            //     });
-            //     gsap.from("#avgResponse", {
-            //         innerText: 0,
-            //         duration: 2,
-            //     });
-            //     gsap.from("#totalTime", {
-            //         innerText: 0,
-            //         duration: 2,
-            //     });
-            // }, 1000);
         },
         onReset() {
             this.result = []
             this.processList = JSON.parse(JSON.stringify(this.defaultList))
-
         },
         preemptivePriorityScheduling(process) {
             const processList = process.map(p => ({
