@@ -8,6 +8,8 @@
   ],
   "compilerOptions": {
     "composite": true,
+    "allowJs": true,
+    "checkJs": false,
     "baseUrl": ".",
     "paths": {
       "@renderer/*": [

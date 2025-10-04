@@ -4,18 +4,22 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  main: {
-    plugins: [externalizeDepsPlugin(), bytecodePlugin()]
-  },
-  preload: {
-    plugins: [externalizeDepsPlugin(), bytecodePlugin()]
-  },
-  renderer: {
-    resolve: {
-      alias: {
-        '@renderer': resolve('src/renderer/src')
-      }
+    main: {
+        plugins: [externalizeDepsPlugin(), bytecodePlugin()]
     },
-    plugins: [vue(), tailwindcss()]
-  }
+    preload: {
+        plugins: [externalizeDepsPlugin(), bytecodePlugin()]
+    },
+    renderer: {
+        resolve: {
+            alias: {
+                '@renderer': resolve('src/renderer/src')
+            }
+        },
+        plugins: [
+            vue(),
+            tailwindcss()
+           
+        ]
+    }
 })
